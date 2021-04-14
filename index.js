@@ -8,7 +8,11 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  // ✨ implement
+  let newObj = { ...obj };
+  Object.keys(newObj).map((v) => {
+    newObj[v] = newObj[v].trim();
+  });
+  return newObj;
 }
 
 /**
@@ -20,7 +24,11 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
+  
+  Object.keys(obj).map((v) => {
+    obj[v] = obj[v].trim();
+  });
+  return obj;
 }
 
 /**
@@ -163,4 +171,4 @@ module.exports = {
   Counter,
   Seasons,
   Car,
-}
+};
