@@ -163,6 +163,7 @@ class Car {
  *    // error.message is "number must be a number"
  * })
  */
+
 async function isEvenNumberAsync(number) {
   // ✨ implement
 
@@ -176,8 +177,6 @@ async function isEvenNumberAsync(number) {
     return false;
   }
 }
-
-console.log(isEvenNumberAsync(NaN));
 
 module.exports = {
   trimProperties,
