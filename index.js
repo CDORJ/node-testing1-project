@@ -60,13 +60,13 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    this.season = {
-      1: "summer",
-      2: "fall",
-      3: "winter",
-      4: "spring",
+    this.seasons = {
+      summer: "summer",
+      fall: "fall",
+      winter: "winter",
+      spring: "spring",
     };
-    this.currentSeason = this.season[4];
+    this.currentSeason = this.seasons.spring;
   }
 
   /**
@@ -83,10 +83,15 @@ class Seasons {
    */
 
   next() {
-    const keysInSeason = Object.keys(this.season);
+    const keysInSeason = Object.keys(this.seasons);
     for (let i = 0; i < keysInSeason.length; i++) {
-      if (keysInSeason[i] === 4) {
-        this.currentSeason = this.season[1];
+      if (keysInSeason[i] === "spring") {
+        this.currentSeason = "summer";
+        return this.currentSeason;
+      }
+      console.log(this.currentSeason);
+      if (keysInSeason[i] === this.currentSeason) {
+        this.currentSeason = keysInSeason[i + 1];
         return this.currentSeason;
       }
     }
