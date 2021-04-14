@@ -24,7 +24,6 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  
   Object.keys(obj).map((v) => {
     obj[v] = obj[v].trim();
   });
@@ -39,8 +38,8 @@ function trimPropertiesMutation(obj) {
  * EXAMPLE
  * findLargestInteger([2, 1, 7, 3, 14, 7]) // returns 14
  */
-function findLargestInteger(integers) {
-  // ✨ implement
+function findLargestInteger(array2) {
+  return Math.max.apply(null, array2);
 }
 
 class Counter {
