@@ -43,28 +43,15 @@ function findLargestInteger(array2) {
 }
 
 class Counter {
-  /**
-   * [Exercise 4A] Counter creates a counter
-   * @param {number} initialNumber - the initial state of the count
-   */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.counter = initialNumber;
   }
-
-  /**
-   * [Exercise 4B] Counter.prototype.countDown counts down to zero
-   * @returns {number} - the next count, does not go below zero
-   *
-   * EXAMPLE
-   * const counter = new Counter(3)
-   * counter.countDown() // returns 3
-   * counter.countDown() // returns 2
-   * counter.countDown() // returns 1
-   * counter.countDown() // returns 0
-   * counter.countDown() // returns 0
-   */
   countDown() {
-    // ✨ implement
+    if (Math.sign(this.counter) === -1 || Math.sign(this.counter) === -0) {
+      return 0;
+    } else {
+      return this.counter--;
+    }
   }
 }
 
@@ -73,7 +60,13 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    // ✨ initialize whatever properties are needed
+    this.season = {
+      1: "summer",
+      2: "fall",
+      3: "winter",
+      4: "spring",
+    };
+    this.currentSeason = this.season[4];
   }
 
   /**
@@ -88,8 +81,15 @@ class Seasons {
    * seasons.next() // returns "spring"
    * seasons.next() // returns "summer"
    */
+
   next() {
-    // ✨ implement
+    const keysInSeason = Object.keys(this.season);
+    for (let i = 0; i < keysInSeason.length; i++) {
+      if (keysInSeason[i] === 4) {
+        this.currentSeason = this.season[1];
+        return this.currentSeason;
+      }
+    }
   }
 }
 

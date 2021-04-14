@@ -35,7 +35,6 @@ describe("[Exercise 3] findLargestInteger", () => {
     const numbArray = [1, 2, 3, 4, 5];
 
     const returnedNumber = utils.findLargestInteger(numbArray);
-    console.log(returnedNumber);
     expect(returnedNumber).toBe(5);
   });
 });
@@ -46,13 +45,26 @@ describe("[Exercise 4] Counter", () => {
     counter = new utils.Counter(3); // each test must start with a fresh couter
   });
   it("[6] the FIRST CALL of counter.countDown returns the initial count", () => {
-    // ✨ test away
+    const actual = counter.countDown();    
+    expect(actual).toBe(3);
   });
   it("[7] the SECOND CALL of counter.countDown returns the initial count minus one", () => {
-    // ✨ test away
+    const first = counter.countDown();
+    const second = counter.countDown();    
+    expect(second).toBe(2);
   });
   it("[8] the count eventually reaches zero but does not go below zero", () => {
     // ✨ test away
+    const first = counter.countDown();
+    const second = counter.countDown();
+    const third = counter.countDown();
+    const fourth = counter.countDown();
+    const fifth = counter.countDown();
+    const sixth = counter.countDown();    
+    expect(third).toBe(1);
+    expect(fourth).toBe(0);
+    expect(fifth).toBe(0);
+    expect(sixth).toBe(0);
   });
 });
 
@@ -62,7 +74,10 @@ describe("[Exercise 5] Seasons", () => {
     seasons = new utils.Seasons(); // each test must start with fresh seasons
   });
   it('[9] the FIRST call of seasons.next returns "summer"', () => {
-    // ✨ test away
+    const first = seasons.next()
+    const second = seasons.next()
+    console.log(first, second)
+    expect(first).toBe("summer")
   });
   it('[10] the SECOND call of seasons.next returns "fall"', () => {
     // ✨ test away
