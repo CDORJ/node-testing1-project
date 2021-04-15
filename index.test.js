@@ -45,12 +45,12 @@ describe("[Exercise 4] Counter", () => {
     counter = new utils.Counter(3); // each test must start with a fresh couter
   });
   it("[6] the FIRST CALL of counter.countDown returns the initial count", () => {
-    const actual = counter.countDown();    
+    const actual = counter.countDown();
     expect(actual).toBe(3);
   });
   it("[7] the SECOND CALL of counter.countDown returns the initial count minus one", () => {
     const first = counter.countDown();
-    const second = counter.countDown();    
+    const second = counter.countDown();
     expect(second).toBe(2);
   });
   it("[8] the count eventually reaches zero but does not go below zero", () => {
@@ -60,7 +60,7 @@ describe("[Exercise 4] Counter", () => {
     const third = counter.countDown();
     const fourth = counter.countDown();
     const fifth = counter.countDown();
-    const sixth = counter.countDown();    
+    const sixth = counter.countDown();
     expect(third).toBe(1);
     expect(fourth).toBe(0);
     expect(fifth).toBe(0);
@@ -74,25 +74,42 @@ describe("[Exercise 5] Seasons", () => {
     seasons = new utils.Seasons(); // each test must start with fresh seasons
   });
   it('[9] the FIRST call of seasons.next returns "summer"', () => {
-    const first = seasons.next()
-    const second = seasons.next()
-    console.log(first, second)
-    expect(first).toBe("summer")
+    const first = seasons.next();
+
+    expect(first).toBe("summer");
   });
   it('[10] the SECOND call of seasons.next returns "fall"', () => {
-    // ✨ test away
+    const first = seasons.next();
+    const second = seasons.next();
+    expect(second).toBe("fall");
   });
   it('[11] the THIRD call of seasons.next returns "winter"', () => {
-    // ✨ test away
+    const first = seasons.next();
+    const second = seasons.next();
+    const third = seasons.next();
+    expect(third).toBe("winter");
   });
   it('[12] the FOURTH call of seasons.next returns "spring"', () => {
-    // ✨ test away
+    const first = seasons.next();
+    const second = seasons.next();
+    const third = seasons.next();
+    const fourth = seasons.next();
+    expect(fourth).toBe("spring");
   });
   it('[13] the FIFTH call of seasons.next returns again "summer"', () => {
-    // ✨ test away
+    const first = seasons.next();
+    const second = seasons.next();
+    const third = seasons.next();
+    const fourth = seasons.next();
+    const fifth = seasons.next();
+    console.log(fifth);
+    expect(fifth).toBe("summer");
   });
   it('[14] the 40th call of seasons.next returns "spring"', () => {
-    // ✨ test away
+    for (let i = 0; i < 40; i++) {
+      seasons.next();
+    }
+    expect(seasons.currentSeason).toEqual("spring");
   });
 });
 
@@ -102,16 +119,26 @@ describe("[Exercise 6] Car", () => {
     focus = new utils.Car("focus", 20, 30); // each test must start with a fresh car
   });
   it("[15] driving the car returns the updated odometer", () => {
-    // ✨ test away
+    focus.drive(5);
+    expect(focus.odometer).toBe(5);
   });
   it("[16] driving the car uses gas", () => {
-    // ✨ test away
+    focus.drive(60);
+    expect(focus.tank).toBe(18);
   });
   it("[17] refueling allows to keep driving", () => {
-    // ✨ test away
+    focus.drive(600);
+    expect(focus.tank).toBe(0);
+    focus.refuel(1);
+    expect(focus.tank).toBe(1);
   });
   it("[18] adding fuel to a full tank has no effect", () => {
-    // ✨ test away
+    focus.refuel(1);
+    expect(focus.tank).toBe(20);
+    focus.drive(30);
+    expect(focus.tank).toBe(19);
+    focus.refuel(15);
+    expect(focus.tank).toBe(20);
   });
 });
 

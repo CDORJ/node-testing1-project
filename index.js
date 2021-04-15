@@ -61,12 +61,12 @@ class Seasons {
    */
   constructor() {
     this.season = {
-      1: "summer",
-      2: "fall",
-      3: "winter",
-      4: "spring",
+      summer: "summer",
+      fall: "fall",
+      winter: "winter",
+      spring: "spring",
     };
-    this.currentSeason = this.season[4];
+    this.currentSeason = this.season.spring;
   }
 
   /**
@@ -85,8 +85,12 @@ class Seasons {
   next() {
     const keysInSeason = Object.keys(this.season);
     for (let i = 0; i < keysInSeason.length; i++) {
-      if (keysInSeason[i] === 4) {
-        this.currentSeason = this.season[1];
+      if (keysInSeason[i] === "spring") {
+        this.currentSeason = "summer";
+        return this.currentSeason;
+      }
+      if (keysInSeason[i] === this.currentSeason) {
+        this.currentSeason = keysInSeason[i + 1];
         return this.currentSeason;
       }
     }
@@ -102,8 +106,10 @@ class Car {
    */
   constructor(name, tankSize, mpg) {
     this.odometer = 0; // car initializes with zero miles
-    this.tank = tankSize; // car initializes full of gas
-    // ✨ initialize whatever other properties are needed
+    this.tankSize = tankSize; // car initializes full of gas
+    this.name = name;
+    this.tank = tankSize;
+    this.mpg = mpg;
   }
 
   /**
@@ -120,7 +126,18 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // ✨ implement
+    if (this.tank - distance / this.mpg <= 0)
+      for (let i = distance; i > 0; i--) {
+        if (this.tank - i / this.mpg === 0) {
+          this.tank = 0;
+          this.odometer += i;
+          return `I ran out of fuel at ${this.odometer} miles`;
+        }
+      }
+    else {
+      this.tank -= Math.round(distance / this.mpg);
+      this.odometer += distance;
+    }
   }
 
   /**
@@ -135,7 +152,12 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    // ✨ implement
+    let newTank = (this.tankSize - 1);
+    if (this.tank <= newTank) {
+      this.tank += gallons;
+    } else {
+      this.tank = this.tankSize;
+    }
   }
 }
 
